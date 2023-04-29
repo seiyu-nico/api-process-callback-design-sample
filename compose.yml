@@ -1,0 +1,21 @@
+services:
+  api-server:
+    build:
+      context: docker/python/
+      dockerfile: Dockerfile
+    volumes:
+      - ./src/api:/src
+    environment:
+      UID: ${UID:-1000}
+      GID: ${GID:-1000}
+    ports:
+      - 80:80
+  process-server:
+    build:
+      context: docker/python/
+      dockerfile: Dockerfile
+    volumes:
+      - ./src/process:/src
+    environment:
+      UID: ${UID:-1000}
+      GID: ${GID:-1000}
